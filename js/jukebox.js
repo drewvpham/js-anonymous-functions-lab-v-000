@@ -20,25 +20,46 @@ function menu() {
   });
 }
 
-function play() {
-  $('#play').on('click', function(e) {
-    $('#songPlaying').html("now playing " + songToPlay + " by " + theArtist);
-    return "now playing " + songToPlay + " by " + theArtist;
-  });
+function menu() {
+  $('#menu').on('click', handleMenuClick);
 }
+
+function handleMenuClick(e){
+    $('#menuOptions').html("You can play a song, pause a song, or view all the songs");
+}
+
+
+function play() {
+  $('#play').on('click', handlePlayClick);
+}
+
+function handlePlayClick(e){
+  $('#songPlaying').html("now playing " + songToPlay + " by " + theArtist);
+  return "now playing " + songToPlay + " by " + theArtist;
+
+}
+
 
 function pause() {
-  $('#pause').on('click', function(e) {
-    $('#songPaused').html(songToPlay + " is paused");
-  });
+  $('#pause').on('click', handlePauseClick);
 }
 
+function handlePauseClick(e){
+  $('#songPaused').html(songToPlay + " is paused");
+
+}
+
+
 function show() {
-  $('#show').on('click', function(e) {
-    var songs = "";
-    for (var key in jukeboxSongs) {
-      songs += jukeboxSongs[key] + " by " + key +  " is available to play. "
-    }
-    $('#showSongs').html(songs);
-  });
+  $('#show').on('click', handleShowClick);
+
+}
+
+function handleShowClick(e){
+  var songs = "";
+  for (var key in jukeboxSongs) {
+    songs += jukeboxSongs[key] + " by " + key +  " is available to play. "
+  }
+  $('#showSongs').html(songs);
+
 }
